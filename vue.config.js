@@ -7,5 +7,17 @@ module.exports = {
                 {name: 'duplicate-style'}
             ]
         })
+    },
+    devServer: {
+        proxy: {//代理
+          '/api': {
+              target: 'http://www.waitui.com/mobile/Index_controller',
+              ws: true,
+              changeOrigin: true,//是否跨域
+              pathRewrite: {
+                  '^/api' : ''// rewrite path
+              }
+          }
+        }
     }
 }
