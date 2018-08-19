@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/Index.vue'
+import ArticleList from './views/ArticleList.vue'
+import WelfareList from './views/WelfareList.vue'
 
 Vue.use(Router)
 
@@ -10,6 +12,16 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index
+    },
+    {
+      path: '/article_list',
+      name: 'article_list',
+      component: ArticleList
+    },
+    {
+      path: '/welfare_list',
+      name: 'welfare_list',
+      component: WelfareList
     },
     {
       path: '/about',

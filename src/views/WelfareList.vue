@@ -22,7 +22,7 @@
             </swiper-slide>
         </swiper>
     </div>
-    <tabbar path="index"></tabbar>
+    <tabbar path="welfare_list"></tabbar>
 </div>
 </template>
 
@@ -33,7 +33,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import Tabbar from '@/components/Tabbar.vue'
 
 export default {
-    name: 'index',
+    name: 'welfare_list',
     components: {
         swiper,
         swiperSlide,
