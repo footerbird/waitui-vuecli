@@ -1,10 +1,10 @@
 <template>
 <div style="height: 100%;">
-    <div class="container" style="padding-bottom: 50px;">
+    <div class="container" id="article_container" style="padding-bottom: 50px;">
         <div class="weui-panel weui-panel_access article-list" style="margin-top: 0;">
             <div class="weui-panel__bd">
                 <template v-for="(article, index) in articleList">
-                    <router-link to="/" class="weui-media-box weui-media-box_appmsg">
+                    <router-link to="/" class="weui-media-box weui-media-box_appmsg" :key="index">
                         <div class="weui-media-box__bd">
                             <h4 class="weui-media-box__title">{{article.article_title}}</h4>
                             <p class="weui-media-box__desc">{{article.article_tag}}&nbsp;&nbsp;{{article.create_time}}</p>
@@ -16,6 +16,8 @@
                 </template>
             </div>
         </div>
+        <load-more v-if="article_loadnone" :show-loading="false" :tip="'暂无数据'"></load-more>
+        <load-more v-else :tip="'正在加载'"></load-more>
     </div>
     <tabbar path="article_list"></tabbar>
 </div>
@@ -23,16 +25,20 @@
 
 <script>
 import Tabbar from '@/components/Tabbar.vue'
+import LoadMore from 'vux/src/components/load-more/index.vue'
 
 export default {
     name: 'article_list',
     components: {
-        Tabbar
+        Tabbar,
+        LoadMore
     },
     data () {
         return {
             articleList: [],
             article_page: 1,//10条一页，每次加载10条
+            article_loading: false,
+            article_loadnone: false
         }
     },
     computed: {
@@ -41,13 +47,38 @@ export default {
         }
     },
     mounted() {
-        this.$http
-        .post('/api/get_articleAjax',this.$qs.stringify({
-            page: this.article_page
+        var that = this;
+        that.$http
+        .post('/api/get_articleAjax',that.$qs.stringify({
+            page: that.article_page
         }))
         .then(({data}) => {
-            let articleList = this.articleList;
+            let articleList = that.articleList;
             articleList.push.apply(articleList,data.article_list);
+        })
+        
+        let container = document.getElementById('article_container');
+        container.addEventListener('scroll',function(){
+            let scrollTop = container.scrollTop;
+            let clientHeight = container.clientHeight;
+            let scrollHeight = container.scrollHeight;
+            if(scrollTop + clientHeight + 20 < scrollHeight) return;
+            if(that.article_loadnone) return;
+            if(that.article_loading) return;
+            that.article_loading = true;
+            that.$http
+            .post('/api/get_articleAjax',that.$qs.stringify({
+                page: that.article_page+1
+            }))
+            .then(({data}) => {
+                let articleList = that.articleList;
+                articleList.push.apply(articleList,data.article_list);
+                that.article_page++;
+                that.article_loading = false;
+                if(data.article_list.length < 10){
+                    that.article_loadnone = true;
+                }
+            })
         })
     },
     methods: {
