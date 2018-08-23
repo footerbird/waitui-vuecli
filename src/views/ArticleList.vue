@@ -3,8 +3,8 @@
     <div class="container" id="article_container" style="padding-bottom: 50px;">
         <div class="weui-panel weui-panel_access article-list" style="margin-top: 0;">
             <div class="weui-panel__bd">
-                <template v-for="(article, index) in articleList">
-                    <router-link to="/" class="weui-media-box weui-media-box_appmsg" :key="index">
+                <template v-for="(article, index) in article_list">
+                    <router-link :to="'/article_detail/'+article.article_id" class="weui-media-box weui-media-box_appmsg" :key="index">
                         <div class="weui-media-box__bd">
                             <h4 class="weui-media-box__title">{{article.article_title}}</h4>
                             <p class="weui-media-box__desc">{{article.article_tag}}&nbsp;&nbsp;{{article.create_time}}</p>
@@ -16,7 +16,7 @@
                 </template>
             </div>
         </div>
-        <load-more v-if="article_loadnone" :show-loading="false" :tip="'暂无数据'"></load-more>
+        <load-more v-if="article_loadnone" :show-loading="false" :tip="'喂喂，你触碰到我的底线了'"></load-more>
         <load-more v-else :tip="'正在加载'"></load-more>
     </div>
     <tabbar path="article_list"></tabbar>
@@ -35,7 +35,7 @@ export default {
     },
     data () {
         return {
-            articleList: [],
+            article_list: [],
             article_page: 1,//10条一页，每次加载10条
             article_loading: false,
             article_loadnone: false
@@ -53,8 +53,8 @@ export default {
             page: that.article_page
         }))
         .then(({data}) => {
-            let articleList = that.articleList;
-            articleList.push.apply(articleList,data.article_list);
+            let article_list = that.article_list;
+            article_list.push.apply(article_list,data.article_list);
         })
         
         let container = document.getElementById('article_container');
@@ -71,8 +71,8 @@ export default {
                 page: that.article_page+1
             }))
             .then(({data}) => {
-                let articleList = that.articleList;
-                articleList.push.apply(articleList,data.article_list);
+                let article_list = that.article_list;
+                article_list.push.apply(article_list,data.article_list);
                 that.article_page++;
                 that.article_loading = false;
                 if(data.article_list.length < 10){

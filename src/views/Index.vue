@@ -1,8 +1,8 @@
 <template>
 <div style="height: 100%;">
     <div class="container" style="overflow: hidden;">
-        <swiper class="swiper-box" :options="swiperOption" ref="mySwiper">
-            <swiper-slide class="swiper-item" v-for="(slide, index) in swiperSlides" :key="index">
+        <swiper class="index-swiper" :options="swiper_option" ref="mySwiper">
+            <swiper-slide class="swiper-item" v-for="(slide, index) in swiper_slides" :key="index">
                 <template v-if="slide.ad_type == 'image'">
                     <img class="banner" :src="slide.ad_address" />
                 </template>
@@ -41,7 +41,7 @@ export default {
     },
     data () {
         return {
-            swiperOption: {
+            swiper_option: {
                 effect: 'coverflow',
                 speed: 500,
                 direction: 'vertical',
@@ -61,13 +61,13 @@ export default {
                             limit: 1
                         }))
                         .then(({data}) => {
-                            let swiperSlides = this.swiperSlides;
-                            swiperSlides.push.apply(swiperSlides,data.ad_list);
+                            let swiper_slides = this.swiper_slides;
+                            swiper_slides.push.apply(swiper_slides,data.ad_list);
                         })
                     }
                 }
             },
-            swiperSlides: []
+            swiper_slides: []
         }
     },
     computed: {
@@ -81,8 +81,8 @@ export default {
             limit: 10
         }))
         .then(({data}) => {
-            let swiperSlides = this.swiperSlides;
-            swiperSlides.push.apply(swiperSlides,data.ad_list);
+            let swiper_slides = this.swiper_slides;
+            swiper_slides.push.apply(swiper_slides,data.ad_list);
         })
     },
     methods: {
@@ -93,14 +93,15 @@ export default {
 
 <style lang="less" scoped="scoped">
 @import '../assets/less/varible.less';
-.swiper-box {
+.index-swiper{
     width: 100%;
+    max-width: 640px;
     height: 100%;
     margin: 0 auto;
+    background: #1b1b1f;
     .swiper-item {
         width: 100%;
         height: 100%;
-        background: #1b1b1f;
         overflow: hidden;
         img.banner{
             width: 100%;
