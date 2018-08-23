@@ -10,7 +10,7 @@
                             <p class="weui-media-box__desc">{{article.article_tag}}&nbsp;&nbsp;{{article.create_time}}</p>
                         </div>
                         <div class="weui-media-box__hd">
-                            <img class="weui-media-box__thumb" :src="article.thumb_path">
+                            <img class="weui-media-box__thumb" v-lazy="article.thumb_path">
                         </div>
                     </router-link>
                 </template>

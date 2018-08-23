@@ -5,6 +5,7 @@ import FastClick from 'fastclick'
 import axios from 'axios'
 import qs from 'qs'
 import VueLazyload from 'vue-lazyload'
+import store from './store'
 
 Vue.use(VueLazyload)
 
@@ -20,5 +21,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
