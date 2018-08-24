@@ -76,12 +76,13 @@ export default {
         }
     },
     mounted() {
-        this.$http
-        .post('/api/get_advertisementAjax',this.$qs.stringify({
+        let that = this;
+        that.$http
+        .post('/api/get_advertisementAjax',that.$qs.stringify({
             limit: 10
         }))
         .then(({data}) => {
-            let swiper_slides = this.swiper_slides;
+            let swiper_slides = that.swiper_slides;
             swiper_slides.push.apply(swiper_slides,data.ad_list);
         })
     },

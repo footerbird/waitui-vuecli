@@ -129,7 +129,7 @@ export default {
         }
     },
     mounted() {
-        var that = this;
+        let that = this;
         that.$http
         .post('/api/get_articleAjax',that.$qs.stringify({
             page: 1
@@ -154,7 +154,7 @@ export default {
         });
     },
     methods: {
-        outerLinkTo: function(href){
+        outerLinkTo(href){
             window.open(href);
         }
     }

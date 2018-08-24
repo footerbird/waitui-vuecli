@@ -47,7 +47,7 @@ export default {
         }
     },
     mounted() {
-        var that = this;
+        let that = this;
         that.$http
         .post('/api/get_articleAjax',that.$qs.stringify({
             page: that.article_page

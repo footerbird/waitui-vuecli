@@ -27,7 +27,7 @@ export default {
         }
     },
     mounted() {
-        var that = this;
+        let that = this;
         that.$http
         .post('/api/get_articleDetailAjax',that.$qs.stringify({
             article_id: that.$route.params.article_id
