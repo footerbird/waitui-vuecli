@@ -22,7 +22,11 @@
             </swiper-slide>
         </swiper>
     </div>
+    
     <tabbar path="index"></tabbar>
+    <popup-login></popup-login>
+    <popup-register></popup-register>
+    
 </div>
 </template>
 
@@ -31,13 +35,17 @@
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import Tabbar from '@/components/Tabbar.vue'
+import PopupLogin from '@/components/PopupLogin.vue'
+import PopupRegister from '@/components/PopupRegister.vue'
 
 export default {
     name: 'index',
     components: {
         swiper,
         swiperSlide,
-        Tabbar
+        Tabbar,
+        PopupLogin,
+        PopupRegister
     },
     data () {
         return {
@@ -71,7 +79,7 @@ export default {
         }
     },
     computed: {
-        swiper() {
+        swiper () {
             return this.$refs.mySwiper.swiper
         }
     },
@@ -81,7 +89,7 @@ export default {
         .post('/api/get_advertisementAjax',that.$qs.stringify({
             limit: 10
         }))
-        .then(({data}) => {
+        .then(({data}) => {//ES2015参数解构
             let swiper_slides = that.swiper_slides;
             swiper_slides.push.apply(swiper_slides,data.ad_list);
         })

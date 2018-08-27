@@ -42,7 +42,7 @@ export default {
         }
     },
     computed: {
-        swiper() {
+        swiper () {
             return this.$refs.mySwiper.swiper
         }
     },

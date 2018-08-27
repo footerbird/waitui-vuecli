@@ -9,40 +9,32 @@ import WelfareEntry from './views/WelfareEntry.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: Index
-    },
-    {
-      path: '/article_list',
-      name: 'article_list',
-      component: ArticleList
-    },
-    {
-      path: '/article_detail/:article_id',
-      name: 'article_detail',
-      component: ArticleDetail
-    },
-    {
-      path: '/welfare_list',
-      name: 'welfare_list',
-      component: WelfareList
-    },
-    {
-      path: '/welfare_entry',
-      name: 'welfare_entry',
-      component: WelfareEntry
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'index',
+            component: Index
+        },
+        {
+            path: '/article_list',
+            name: 'article_list',
+            component: ArticleList
+        },
+        {
+            path: '/article_detail/:article_id',
+            name: 'article_detail',
+            component: ArticleDetail
+        },
+        {
+            path: '/welfare_list',
+            name: 'welfare_list',
+            component: WelfareList
+        },
+        {
+            path: '/welfare_entry',
+            name: 'welfare_entry',
+            component: WelfareEntry
+        }
+    ]
 })

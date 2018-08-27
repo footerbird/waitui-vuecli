@@ -4,7 +4,8 @@
         <router-link to="/" class="item" :class="{'cur':isIndex}">首页</router-link>
         <router-link to="/article_list" class="item" :class="{'cur':isArticle}">头条</router-link>
         <router-link to="/welfare_list" class="item" :class="{'cur':isWelfare}">发现</router-link>
-        <router-link to="/account" class="item" :class="{'cur':isAccount}">我的</router-link>
+        <router-link v-if="isLogin" to="/account" class="item" :class="{'cur':isAccount}">我的</router-link>
+        <router-link v-else tag="div" to="" @click.native="popupLogin" class="item">我的</router-link>
     </div>
 </div>
 </template>
@@ -13,18 +14,26 @@
 export default {
     props: ['path'],
     computed: {
-      isIndex: function () {
-        return this.path === 'index'
-      },
-      isArticle: function () {
-        return this.path === 'article_list'
-      },
-      isWelfare: function () {
-        return this.path === 'welfare_list'
-      },
-      isAccount: function () {
-        return this.path === 'account'
-      }
+        isIndex () {
+            return this.path === 'index'
+        },
+        isArticle () {
+            return this.path === 'article_list'
+        },
+        isWelfare () {
+            return this.path === 'welfare_list'
+        },
+        isAccount () {
+            return this.path === 'account'
+        },
+        isLogin () {
+            return this.$store.state.userinfo
+        }
+    },
+    methods: {
+        popupLogin () {
+            this.$store.commit("popupLogin");
+        }
     }
 }
 </script>

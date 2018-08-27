@@ -21,86 +21,96 @@ li{
 img{
     display:block;
 }
-.header{
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.header-container{
-    background-color: #fff;
-    width: 100%;
-    height: 45px;
-    box-sizing: border-box;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 0 10px #e5e5e5;
-}
-.header-container .back-text,.header-container .save-text{
-    font-size: 16px;
-    color: #3d464d;
-    display: inline-block;
-    height: 45px;
-    line-height: 45px;
-    padding: 0 15px;
-}
-.header-container .save-text.forbid{
-    color: #999;
-}
 .container{
     width: 100%;
     height: 100%;
     overflow: auto;
-    box-sizing: border-box;
+    .border-box;
     -webkit-overflow-scrolling: touch;
 }
 
-/*jqweui.css,weui.css样式改写*/
-.weui-popup__modal{
-    background-color: #fff;
-}
-.weui-popup__modal-cart{
-    border-radius: 8px;
-}
-.weui-popup__modal .toolbar{
-    font-size: 18px;
-    background-color: #fff;
-}
-.weui-popup__modal .toolbar .toolbar-inner{
-    height: 44px;
-}
-.weui-popup__modal .toolbar .title {
-    font-size: 18px;
-    color: #333;
-    line-height: 44px;
-}
-.weui-popup__modal .toolbar .close-button {
-  position: absolute;
-  right: 0;
-  box-sizing: border-box;
-  line-height: 40px;
-  font-size: 28px;
-  color: #999;
-  z-index: 1;
-  padding: 0 10px;
-}
-.weui-popup__modal .modal-content{
-    padding-top: 44px;
-    -webkit-overflow-scrolling:touch;
-}
-.weui-popup__modal .modal-footer{
-    position: absolute;
-    left: 0;
+/*popup弹出框*/
+.weui-popup__container {
+    position: fixed;
     bottom: 0;
+    left: 0;
     right: 0;
-    z-index: 1;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    .weui-popup__modal {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        color: #3d4145;
+        height: 100%;
+        background: #fff;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .toolbar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            position: relative;
+            width: 100%;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #3d4145;
+            &:before{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: auto;
+                right: auto;
+                height: 1px;
+                width: 100%;
+                background-color: #d9d9d9;
+                display: block;
+                z-index: 15;
+                -webkit-transform-origin: 50% 0%;
+                transform-origin: 50% 0%;
+                -webkit-transform: scaleY(0.5);
+                transform: scaleY(0.5);
+            }
+            .toolbar-inner {
+                height: 44px;
+                .display-flex;
+                text-align: center;
+                .title {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    padding: 0;
+                    font-size: 18px;
+                    font-weight: normal;
+                    line-height: 44px;
+                    color: #333;
+                    text-align: center;
+                    white-space: nowrap;
+                }
+            }
+        }
+        .modal-content {
+            height: 100%;
+            padding-top: 44px;
+            .border-box;
+            overflow: auto;
+            -webkit-overflow-scrolling:touch;
+        }
+        .modal-footer{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+        }
+    }
 }
+
 .weui-btn_white{
     font-size: 16px;
     color: #666;
@@ -116,356 +126,4 @@ img{
 }
 .weui-btn_disabled.weui-btn_login{
     background-color: #f9907e;
-}
-
-
-.weui-dialog__btn{
-    color: #ea6f5a;
-}
-/*jqweui.css,weui.css样式改写*/
-
-.side-bar{
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    font-size: 10px;
-    color: #fff;
-    line-height: 10px;
-    text-align: center;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-@keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-.side-bar .ico-figure{
-    display: block;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
-    border-radius: 50%;
-    box-sizing: border-box;
-    animation:spin linear 5s infinite;
-    -webkit-animation:spin linear 5s infinite;
-}
-.side-bar .ico-heart{
-    display: block;
-    width: 100px;
-    height: 100px;
-    margin-top: -10px;
-    margin-bottom: -25px;
-//  background: url(../images/side_heart_animation.png?201806042224) no-repeat;
-    background-position: left;
-    background-size: 2900%;
-}
-@-webkit-keyframes heartBlast {
-    0% {
-        background-position: left;
-    }
-    100% {
-        background-position: right;
-    }
-}
-@keyframes heartBlast {
-    0% {
-        background-position: left;
-    }
-100% {
-        background-position: right;
-    }
-}
-.side-bar .heartAnimation {
-    display: inline-block;
-    -webkit-animation-name: heartBlast;
-    animation-name: heartBlast;
-    -webkit-animation-duration: .8s;
-    animation-duration: .8s;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
-    -webkit-animation-timing-function: steps(28);
-    animation-timing-function: steps(28);
-    background-position: right;
-}
-
-.swiper-slide-v .swiper-mask .video-play{
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    left: 50%;
-    top: 50%;
-    margin-left: -.75rem;
-    margin-top: -.75rem;
-//  background: url(../images/video-play.png) no-repeat;
-    background-position: left bottom;
-    background-size: 100% auto;
-}
-.swiper-slide-v .swiper-hongbao{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100px;
-    height: 120px;
-    overflow: hidden;
-}
-.swiper-slide-v .swiper-hongbao img{
-    position: absolute;
-    right: 100px;
-    bottom: 0;
-    width: 64px;
-    height: auto;
-    border-radius: 4px;
-    transform-origin: right bottom;
-    -webkit-transform-origin: right bottom;
-}
-.swiper-slide-active .swiper-hongbao img{
-    animation:hongbaowave 5s infinite;
-    -webkit-animation:hongbaowave 5s infinite;
-}
-@keyframes hongbaowave
-{
-0% {transform: rotate(0deg);}
-50% {transform: rotate(60deg);}
-100% {transform: rotate(0deg);}
-}
-
-@-webkit-keyframes hongbaowave /*Safari and Chrome*/
-{
-0% {transform: rotate(0deg); -webkit-transform: rotate(0deg);}
-50% {transform: rotate(60deg); -webkit-transform: rotate(60deg);}
-100% {transform: rotate(0deg); -webkit-transform: rotate(0deg);}
-}
-
-/*登录框*/
-.login-form{
-    margin-top: 1.2rem;
-    padding: 0 30px;
-}
-.login-form li{
-    border-bottom: 1px solid #f0f0f0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    margin-bottom: 10px;
-}
-.login-form li .login-input-box{
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    flex: 1;
-    height: 1.1rem;
-    position: relative;
-}
-.login-form li .login-input-box .login-input{
-    border: 0;
-    width: 100%;
-    height: 1.1rem;
-    padding-right: 20px;
-    outline: none;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-.login-form li .login-input-box .weui-icon-clear{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    margin-top: -7px;
-}
-.login-input:not(:valid)~.weui-icon-clear{
-    display: none;
-}
-.login-form li .login-input-link{
-    width: 2rem;
-    line-height: 1.1rem;
-    text-align: right;
-    font-size: 14px;
-    color: #ea6f5a;
-}
-.login-form li .login-input-link.forbid{
-    color: #999;
-}
-
-.login-link-box{
-    margin-top: .6rem;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: space-between;
-}
-.login-link-box .login-link{
-    font-size: 14px;
-    color: #5195d5;
-    line-height: 24px;
-}
-.login-forget-pwd{
-    position: absolute;
-    top: -.8rem;
-    right: 0;
-    font-size: 14px;
-    color: #5195d5;
-    line-height: 24px;
-}
-
-/*账户中心头部样式*/
-.account-header{
-    position: relative;
-    background-color: #fff;
-    padding-bottom: 10px;
-}
-.account-header:after{
-    content: " ";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 1px;
-    border-bottom: 1px solid #E5E5E5;
-    color: #E5E5E5;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-}
-.account-header-sign{
-    position: absolute;
-    top: 40px;
-    right: 20px;
-    font-size: 14px;
-    color: #ffc200;
-    line-height: 32px;
-    padding-left: 28px;
-//  background: url(../images/account-header-sign.png) no-repeat;
-    background-size: 24px;
-    background-position: 0 center;
-}
-.account-header-sign.signed{
-    right: 6px;
-    color: #ccc;
-//  background-image: url(../images/account-header-signed.png);
-}
-.account-header-sign:after{
-    content: "";
-    position: absolute;
-    right: -8px;
-    top: 14px;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #ffc200;
-}
-.account-header-sign.signed:after{
-    display: none;
-}
-
-.account-header-info{
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 30px 30px 15px 30px;
-    align-items: center;
-}
-.account-header-figure{
-    width: 68px;
-    height: 68px;
-    margin-right: 15px;
-}
-.account-header-figure img{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-.account-header-name{
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    flex: 1;
-    min-width: 0;
-}
-.account-header-name h4{
-    font-size: 18px;
-    font-weight: 400;
-    color: #333;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.account-header-name h4 a{
-    color: #333;
-}
-.account-header-name p{
-    font-size: 14px;
-    color: #999;
-    line-height: 1.4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.account-header-name p a{
-    color: #999;
-}
-.account-header-tab{
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 15px;
-    justify-content: space-between;
-}
-.account-header-tab a{
-    width: 2rem;
-    text-align: center;
-    color: #333;
-}
-.account-header-tab a h4{
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
-}
-.account-header-tab a p{
-    font-size: 14px;
-    color: #999;
-    line-height: 1.4;
-}
-
-/*关于我们页面*/
-.about-us{
-    text-align: center;
-    padding: 50px 0 30px;
-    background-color: #fff;
-}
-.about-us .about-logo{
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 50%;
-    margin: 0 auto;
-}
-.about-us .about-slogan{
-    font-size: 22px;
-    margin-top: 20px;
-}
-
-/*个人信息页面*/
-.userinfo-figure{
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
 }

@@ -154,7 +154,7 @@ export default {
         });
     },
     methods: {
-        outerLinkTo(href){
+        outerLinkTo (href) {
             window.open(href);
         }
     }
