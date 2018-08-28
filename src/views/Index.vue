@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style lang="less" scoped="scoped">
-@import '../assets/less/varible.less';
+@import '~@/assets/less/varible.less';
 .index-swiper{
     width: 100%;
     max-width: 640px;

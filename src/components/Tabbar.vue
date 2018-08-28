@@ -1,11 +1,11 @@
 <template>
 <div class="footer">
-    <div class="footer-container" :class="{'footer-container-index':isIndex}">
-        <router-link to="/" class="item" :class="{'cur':isIndex}">首页</router-link>
-        <router-link to="/article_list" class="item" :class="{'cur':isArticle}">头条</router-link>
-        <router-link to="/welfare_list" class="item" :class="{'cur':isWelfare}">发现</router-link>
-        <router-link v-if="isLogin" to="/account" class="item" :class="{'cur':isAccount}">我的</router-link>
-        <router-link v-else tag="div" to="" @click.native="popupLogin" class="item">我的</router-link>
+    <div class="footer-container" :class="{'footer-container-index':is_index}">
+        <router-link to="/" class="item" :class="{'cur':is_index}">首页</router-link>
+        <router-link to="/article_list" class="item" :class="{'cur':is_article}">头条</router-link>
+        <router-link to="/welfare_list" class="item" :class="{'cur':is_welfare}">发现</router-link>
+        <router-link v-if="is_login" to="/account" class="item" :class="{'cur':is_account}">我的</router-link>
+        <a href="javascript:;" v-else @click="popupLogin" class="item">我的</a>
     </div>
 </div>
 </template>
@@ -14,19 +14,19 @@
 export default {
     props: ['path'],
     computed: {
-        isIndex () {
+        is_index () {
             return this.path === 'index'
         },
-        isArticle () {
+        is_article () {
             return this.path === 'article_list'
         },
-        isWelfare () {
+        is_welfare () {
             return this.path === 'welfare_list'
         },
-        isAccount () {
+        is_account () {
             return this.path === 'account'
         },
-        isLogin () {
+        is_login () {
             return this.$store.state.userinfo
         }
     },
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="less" scoped="scoped">
-@import '../assets/less/varible.less';
+@import '~@/assets/less/varible.less';
 .footer{
     position: absolute;
     z-index: 10;

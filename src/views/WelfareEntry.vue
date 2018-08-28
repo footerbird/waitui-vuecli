@@ -5,13 +5,13 @@
         <!--活动列表-->
         <div class="welfare-list">
             <template v-for="(welfare, index) in welfare_list">
-                <router-link tag="div" to="" class="welfare-item" @click.native="outerLinkTo(welfare.welfare_link)" :key="index">
+                <a href="javascript:;" class="welfare-item" @click="outerLinkTo(welfare.welfare_link)" :key="index">
                     <img v-lazy="welfare.welfare_banner" />
                     <div class="welfare-item-bottom">
                         <div class="welfare-item-title">{{welfare.welfare_title}}</div>
                         <div class="welfare-item-time">{{welfare.create_time}}</div>
                     </div>
-                </router-link>
+                </a>
             </template>
         </div>
         
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="less" scoped="scoped">
-@import '../assets/less/varible.less';
+@import '~@/assets/less/varible.less';
 
 .welfare-list{
     display: block;

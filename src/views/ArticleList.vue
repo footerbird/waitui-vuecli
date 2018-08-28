@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style lang="less" scoped="scoped">
-@import '../assets/less/varible.less';
+@import '~@/assets/less/varible.less';
 /*头条列表*/
 .article-list{
     .weui-media-box_appmsg{

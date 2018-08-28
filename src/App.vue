@@ -13,5 +13,5 @@
 <style lang="less">
 @import '~vux/src/styles/reset.less';
 @import '~vux/src/styles/weui/weui.less';
-@import './assets/less/base.less';
+@import '~@/assets/less/base.less';
 </style>

@@ -4,9 +4,9 @@
         <!--banner图轮播-->
         <swiper class="welfare-swiper" :options="swiper_option" ref="mySwiper">
             <swiper-slide class="swiper-item" v-for="(slide, index) in swiper_slides" :key="index">
-                <router-link class="swiper-item-link" tag="div" to="" @click.native="outerLinkTo(slide.href)">
+                <a href="javascript:;" class="swiper-item-link" @click="outerLinkTo(slide.href)">
                     <img :src="slide.src" />
-                </router-link>
+                </a>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
@@ -32,22 +32,22 @@
                 <router-link class="item" to="/welfare_entry"><span style="padding-left: 15px;"><i class="crown"></i>大牌专区</span></router-link>
             </div>
             <div class="welfare-subject-topic">
-                <router-link class="brand" tag="div" to="" @click.native="outerLinkTo('https://www.marksmile.com/m')">
+                <a href="javascript:;" class="brand" @click="outerLinkTo('https://www.marksmile.com/m')">
                     <div class="title">品牌保护</div>
                     <h2>中国品牌的网络警卫</h2>
                     <h3>让品牌微笑</h3>
-                </router-link>
+                </a>
                 <div class="brand-flex">
-                    <router-link class="domain" tag="div" to="" @click.native="outerLinkTo('http://www.yumi.com/')">
+                    <a href="javascript:;" class="domain" @click="outerLinkTo('http://www.yumi.com/')">
                         <div class="title">域名服务</div>
                         <h2>让网站更好记</h2>
                         <h3>品牌大数据，全网监控</h3>
-                    </router-link>
-                    <router-link class="mark" tag="div" to="" @click.native="outerLinkTo('http://www.shangbiao.com/')">
+                    </a>
+                    <a href="javascript:;" class="mark" @click="outerLinkTo('http://www.shangbiao.com/')">
                         <div class="title">商标服务</div>
                         <h2>好产品的出路</h2>
                         <h3>一站式商标解决方案</h3>
-                    </router-link>
+                    </a>
                 </div>
             </div>
         </div>
@@ -55,13 +55,13 @@
         <!--活动列表-->
         <div class="welfare-list">
             <template v-for="(welfare, index) in welfare_list">
-                <router-link tag="div" to="" class="welfare-item" @click.native="outerLinkTo(welfare.welfare_link)" :key="index">
+                <a href="javascript:;" class="welfare-item" @click="outerLinkTo(welfare.welfare_link)" :key="index">
                     <img v-lazy="welfare.welfare_banner" />
                     <div class="welfare-item-bottom">
                         <div class="welfare-item-title">{{welfare.welfare_title}}</div>
                         <div class="welfare-item-time">{{welfare.create_time}}</div>
                     </div>
-                </router-link>
+                </a>
             </template>
         </div>
         
@@ -162,7 +162,7 @@ export default {
 </script>
 
 <style lang="less" scoped="scoped">
-@import '../assets/less/varible.less';
+@import '~@/assets/less/varible.less';
 .welfare-swiper{
     display: block;
     width: 100%;
@@ -190,7 +190,7 @@ export default {
     display: block;
     height: 56px;
     padding: 8px 15px 8px 60px;
-    background: url(../assets/images/welfare/welfare_announcement.jpg) #fff no-repeat;
+    background: url(~@/assets/images/welfare/welfare_announcement.jpg) #fff no-repeat;
     background-size: 40px;
     background-position: 10px center;
     .border-box;
@@ -251,7 +251,7 @@ export default {
                 display: inline-block;
                 width: 18px;
                 height: 18px;
-                background: url(../assets/images/welfare/welfare_subject_user.png) no-repeat;
+                background: url(~@/assets/images/welfare/welfare_subject_user.png) no-repeat;
                 background-size: 100% 100%;
                 vertical-align: -4px;
                 margin-right: 8px;
@@ -260,7 +260,7 @@ export default {
                 display: inline-block;
                 width: 18px;
                 height: 18px;
-                background: url(../assets/images/welfare/welfare_subject_fire.png) no-repeat;
+                background: url(~@/assets/images/welfare/welfare_subject_fire.png) no-repeat;
                 background-size: 100% 100%;
                 vertical-align: -4px;
                 margin-right: 8px;
@@ -269,7 +269,7 @@ export default {
                 display: inline-block;
                 width: 18px;
                 height: 18px;
-                background: url(../assets/images/welfare/welfare_subject_crown.png) no-repeat;
+                background: url(~@/assets/images/welfare/welfare_subject_crown.png) no-repeat;
                 background-size: 100% 100%;
                 vertical-align: -4px;
                 margin-right: 8px;
@@ -280,7 +280,7 @@ export default {
                 top: 6px;
                 width: 32px;
                 height: 18px;
-                background: url(../assets/images/welfare/welfare_subject_hot.png) no-repeat;
+                background: url(~@/assets/images/welfare/welfare_subject_hot.png) no-repeat;
                 background-size: 100% 100%;
             }
             &.mid{
@@ -339,7 +339,7 @@ export default {
             position: relative;
             padding-top: 22px;
             .border-box;
-            background: url(../assets/images/welfare/welfare_topic_brand.png) #fbfbfb no-repeat;
+            background: url(~@/assets/images/welfare/welfare_topic_brand.png) #fbfbfb no-repeat;
             background-position: right bottom;
             background-size: 100% auto;
             .title{
@@ -364,7 +364,7 @@ export default {
                 margin-bottom: 5px;
                 padding-top: 22px;
                 .border-box;
-                background: url(../assets/images/welfare/welfare_topic_domain.png) #fbfbfb no-repeat;
+                background: url(~@/assets/images/welfare/welfare_topic_domain.png) #fbfbfb no-repeat;
                 background-position: right center;
                 background-size: auto 80%;
                 .title{
@@ -385,7 +385,7 @@ export default {
                 position: relative;
                 padding-top: 22px;
                 .border-box;
-                background: url(../assets/images/welfare/welfare_topic_mark.png) #fbfbfb no-repeat;
+                background: url(~@/assets/images/welfare/welfare_topic_mark.png) #fbfbfb no-repeat;
                 background-position: right center;
                 background-size: auto 100%;
                 .title{

@@ -54,7 +54,6 @@ img{
             top: 0;
             right: 0;
             z-index: 1;
-            position: relative;
             width: 100%;
             font-size: 18px;
             line-height: 1.5;
@@ -126,4 +125,67 @@ img{
 }
 .weui-btn_disabled.weui-btn_login{
     background-color: #f9907e;
+}
+
+
+/*登录框*/
+.login-form{
+    margin-top: 1.2rem;
+    padding: 0 30px;
+    li{
+        border-bottom: 1px solid #f0f0f0;
+        .display-flex;
+        margin-bottom: 10px;
+        .login-input-box{
+            .flex-number;
+            height: 1.1rem;
+            position: relative;
+            .login-input{
+                border: 0;
+                width: 100%;
+                height: 1.1rem;
+                padding-right: 20px;
+                outline: none;
+                font-size: 16px;
+                .border-box;
+            }
+            .weui-icon-clear{
+                position: absolute;
+                right: 0;
+                top: 50%;
+                margin-top: -7px;
+            }
+            .login-input:not(:valid)~.weui-icon-clear{
+                display: none;
+            }
+        }
+        .login-input-link{
+            width: 2rem;
+            line-height: 1.1rem;
+            text-align: right;
+            font-size: 14px;
+            color: @base-color;
+            &.forbid{
+                color: #999;
+            }
+        }
+    }
+    .login-link-box{
+        margin-top: .6rem;
+        .display-flex;
+        justify-content: space-between;
+        .login-link{
+            font-size: 14px;
+            color: #5195d5;
+            line-height: 24px;
+        }
+    }
+    .login-forget-pwd{
+        position: absolute;
+        top: -.8rem;
+        right: 0;
+        font-size: 14px;
+        color: #5195d5;
+        line-height: 24px;
+    }
 }

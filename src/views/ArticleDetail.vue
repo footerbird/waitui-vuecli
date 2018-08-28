@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="less" scoped="scoped">
-@import '../assets/less/varible.less';
+@import '~@/assets/less/varible.less';
 /*头条详细页面*/
 .weui-article{
     font-size: 18px;
