@@ -53,6 +53,7 @@
 
 <script>
 import Popup from 'vux/src/components/popup/index.vue'
+import { Valid } from '@/util/util'
 
 export default {
     components: {
@@ -79,18 +80,18 @@ export default {
             }
         },
         forbid_code_btn () {
-            return !/^1[3|4|5|8][0-9]\d{8}$/.test(this.phone_num) || this.sending_code
+            return !Valid.isMobile(this.phone_num) || this.sending_code
         },
         forbid_login_btn () {
             let that = this;
             if(that.pwd_login){//密码登录
-                if(/^1[3|4|5|8][0-9]\d{8}$/.test(that.phone_num) && that.pwd_num != "" && !that.sending_login){
+                if(Valid.isMobile(that.phone_num) && that.pwd_num != "" && !that.sending_login){
                     return false;
                 }else{
                     return true;
                 }
             }else{//短信登录
-                if(/^1[3|4|5|8][0-9]\d{8}$/.test(that.phone_num) && /^\d{6}$/.test(that.code_num) && !that.sending_login){
+                if(Valid.isMobile(that.phone_num) && Valid.isCode6(that.code_num) && !that.sending_login){
                     return false;
                 }else{
                     return true;

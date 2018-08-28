@@ -68,7 +68,11 @@
         <load-more :show-loading="false" :tip="'喂喂，你触碰到我的底线了'"></load-more>
         
     </div>
+    
     <tabbar path="welfare_list"></tabbar>
+    <popup-login></popup-login>
+    <popup-register></popup-register>
+    
 </div>
 </template>
 
@@ -78,6 +82,9 @@ import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import Tabbar from '@/components/Tabbar.vue'
 import LoadMore from 'vux/src/components/load-more/index.vue'
+import PopupLogin from '@/components/PopupLogin.vue'
+import PopupRegister from '@/components/PopupRegister.vue'
+import { CDN_URL } from '@/util/constant'
 
 export default {
     name: 'welfare_list',
@@ -85,7 +92,9 @@ export default {
         swiper,
         swiperSlide,
         Tabbar,
-        LoadMore
+        LoadMore,
+        PopupLogin,
+        PopupRegister
     },
     data () {
         return {
@@ -107,15 +116,15 @@ export default {
             },
             swiper_slides: [
                 {
-                    src: this.$global.CDN_URL+'/welfare/welfare_banner_1.jpg',
+                    src: CDN_URL+'/welfare/welfare_banner_1.jpg',
                     href: 'https://www.baidu.com/'
                 },
                 {
-                    src: this.$global.CDN_URL+'/welfare/welfare_banner_2.jpg',
+                    src: CDN_URL+'/welfare/welfare_banner_2.jpg',
                     href: 'https://www.baidu.com/'
                 },
                 {
-                    src: this.$global.CDN_URL+'/welfare/welfare_banner_3.jpg',
+                    src: CDN_URL+'/welfare/welfare_banner_3.jpg',
                     href: 'https://www.baidu.com/'
                 }
             ],

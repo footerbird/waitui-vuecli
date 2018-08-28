@@ -11,10 +11,10 @@ export default new Vuex.Store({
     },
     mutations: {
         login (state, payload) {//提交载荷payload
-            state.user = payload
+            state.userinfo = payload
         },
         logout (state) {
-            state.user = undefined
+            state.userinfo = undefined
         },
         popupLogin (state) {
             state.popup_login = true

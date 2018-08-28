@@ -19,19 +19,27 @@
         <load-more v-if="article_loadnone" :show-loading="false" :tip="'喂喂，你触碰到我的底线了'"></load-more>
         <load-more v-else :tip="'正在加载'"></load-more>
     </div>
+    
     <tabbar path="article_list"></tabbar>
+    <popup-login></popup-login>
+    <popup-register></popup-register>
+    
 </div>
 </template>
 
 <script>
 import Tabbar from '@/components/Tabbar.vue'
 import LoadMore from 'vux/src/components/load-more/index.vue'
+import PopupLogin from '@/components/PopupLogin.vue'
+import PopupRegister from '@/components/PopupRegister.vue'
 
 export default {
     name: 'article_list',
     components: {
         Tabbar,
-        LoadMore
+        LoadMore,
+        PopupLogin,
+        PopupRegister
     },
     data () {
         return {
