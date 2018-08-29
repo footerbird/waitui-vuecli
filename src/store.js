@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {setStore} from './util/util'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ export default new Vuex.Store({
     },
     mutations: {
         login (state, payload) {//提交载荷payload
-            state.userinfo = payload
+            state.userinfo = payload;
+            setStore('userinfo', JSON.stringify(payload));
         },
         logout (state) {
             state.userinfo = undefined
