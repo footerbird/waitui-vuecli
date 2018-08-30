@@ -2,7 +2,11 @@
 <div style="height: 100%;">
     <div class="container" id="article_container">
         
-        <article class="weui-article">
+        <div v-transfer-dom v-if="page_loading">
+            <loading :show="page_loading" text="Loading"></loading>
+        </div>
+        <template v-else>
+        <div class="weui-article">
             <h1 class="article-title">{{article.article_title}}</h1>
             <div class="article-author">
                 <img class="article-author-figure" :src="article.figure_path" />
@@ -11,19 +15,29 @@
             </div>
             <div class="article-summary">{{article.article_lead}}</div>
             <section v-html="article.article_content"></section>
-        </article>
+        </div>
+        </template>
         
     </div>
 </div>
 </template>
 
 <script>
+import Loading from 'vux/src/components/loading/index.vue'
 
 export default {
     name: 'article_detail',
+    components: {
+        Loading
+    },
     data () {
         return {
-            article: {}
+            article: undefined
+        }
+    },
+    computed: {
+        page_loading(){
+            return (this.article == undefined)?true:false;
         }
     },
     mounted() {

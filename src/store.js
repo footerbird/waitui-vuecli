@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {setStore} from './util/util'
+import {setStore, removeStore} from './util/util'
 
 Vue.use(Vuex)
 
@@ -14,9 +14,12 @@ export default new Vuex.Store({
         login (state, payload) {//提交载荷payload
             state.userinfo = payload;
             setStore('userinfo', JSON.stringify(payload));
+            setStore('logintime', new Date().getTime());
         },
         logout (state) {
-            state.userinfo = undefined
+            state.userinfo = undefined;
+            removeStore('userinfo');
+            removeStore('logintime');
         },
         popupLogin (state) {
             state.popup_login = true

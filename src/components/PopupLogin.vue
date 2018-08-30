@@ -37,8 +37,8 @@
                       <a href="javascript:;" class="weui-btn weui-btn_login" :class="{'weui-btn_disabled':forbid_login_btn}" @click="funcLogin">登录</a>
                   </div>
                   <div class="login-link-box">
-                      <a href="javascript:;" class="login-link" v-if="pwd_login" @click="switchLoginType">密码登录</a>
-                      <a href="javascript:;" class="login-link" v-else @click="switchLoginType">短信登录</a>
+                      <a href="javascript:;" class="login-link" v-if="pwd_login" @click="switchLoginType">短信登录</a>
+                      <a href="javascript:;" class="login-link" v-else @click="switchLoginType">密码登录</a>
                       <a href="javascript:;" class="login-link" @click="popupRegister">注册</a>
                   </div>
               </div>

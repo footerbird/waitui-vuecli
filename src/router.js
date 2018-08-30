@@ -5,6 +5,7 @@ import ArticleList from './views/ArticleList.vue'
 import ArticleDetail from './views/ArticleDetail.vue'
 import WelfareList from './views/WelfareList.vue'
 import WelfareEntry from './views/WelfareEntry.vue'
+import Account from './views/Account.vue'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
             path: '/welfare_entry',
             name: 'welfare_entry',
             component: WelfareEntry
+        },
+        {
+            path: '/account',
+            name: 'account',
+            component: Account
         }
     ]
 })
